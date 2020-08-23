@@ -1,0 +1,12 @@
+Arraycopy:
+Two ways to copy arrays:
+1. Item by item using a loop.
+2. using arraycopy. Takes 5 parameters:
+    Source array
+    Start position in source
+    Target array
+    Start position in target
+    Number to copy
+
+arraycopy is (likely to be) faster, particularly for large arrays. More compact code.
+Code is (arguably) harder to read.
