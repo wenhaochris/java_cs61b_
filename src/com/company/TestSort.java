@@ -6,14 +6,14 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class TestSort {
     @Test
-    public static void testSort() {
+    public void testSort() {
         String[] input = {"i", "have", "an", "egg"};
         String[] expected = {"an", "egg", "have", "i"};
         Sort.sort(input);
         assertArrayEquals(expected, input);
     }
     @Test
-    public  static  void testFindSmallest(){
+    public  void testFindSmallest(){
         String [] input = {"i", "have", "an", "egg"};
         int  expected = 2;
 
@@ -21,7 +21,7 @@ public class TestSort {
         org.junit.Assert.assertEquals(expected, actual);
     }
     @Test
-    public  static  void testSwap(){
+    public  void testSwap(){
         String [] input = {"i", "have", "an", "egg"};
         String [] expected = {"an", "have", "i", "egg"};
 
@@ -29,8 +29,5 @@ public class TestSort {
         org.junit.Assert.assertEquals(expected, input);
     }
 
-    public  static void main(String[] args){
 
-     testSort();
-    }
 }

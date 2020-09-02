@@ -52,6 +52,8 @@ public class SLList {
 
 
 
+
+
     public static void main(String[] args){
         SLList L = new SLList(5);
         L.addFrisrt(10);

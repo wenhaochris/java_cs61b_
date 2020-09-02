@@ -1,5 +1,7 @@
 package list.speedtest;
 
+import com.company.Generic_DDList;
+
 public class SLList <Blah>{
     private class StuffNode{
             public  Blah item;
@@ -44,10 +46,82 @@ public class SLList <Blah>{
         p.next = new StuffNode(x, null);
     }
 
+    public Blah getLast(){
+        StuffNode p = sentinel;
+        while (p.next != null){
+            p = p.next;
+        }
+
+        Blah ans = p.item;
+        return ans;
+    }
+
+    public Blah get(int n){
+        if(n > size){
+            return null;
+        }
+        Blah ans = null;
+        StuffNode p = sentinel.next;
+        for(int i = n; i >= 0; i--){
+            ans = p.item;
+            p = p.next;
+        }
+        return ans;
+    }
+
+
+    public Blah getRecursion(int i){
+        return getRecursion(i, sentinel);
+    }
+
+    public Blah getRecursion(int i, StuffNode sentinel){
+        if( i== 0)
+            return sentinel.item;
+        return getRecursion(i-1, sentinel.next);
+    }
+
     public int size(){
         return size;
     }
+    public Blah removeLast(){
+        StuffNode p = sentinel;
+        while(p.next != null){
+            p = p.next;
+        }
+        Blah ans = p.item;
+        p.next = null;
+        return ans;
+
+    }
+    public  void insert(Blah item, int position){
+            if(sentinel.next == null && position == 0) {
+                addFirst(item);
+                return;
+            }
+            StuffNode p = sentinel.next;
+            while(position > 1 && p.next != null){
+                position--;
+                p = p.next;
+            }
+            StuffNode node = new StuffNode(item, p.next);
+            p.next = node;
+
+    }
+
+    public static String longest(SLList<String> list){
+        int maxDex = 0;
+        for(int i = 0; i < list.size; i++){
+            if(list.get(i).length() > list.get(maxDex).length()){
+                maxDex = i;
+            }
+        }
+        return list.get(maxDex);
+    }
     public static void main(String[] args){
-        SLList<Integer> L = new SLList<>();
+        SLList<String> someList = new SLList<>();
+        someList.addLast("elk");
+        someList.addLast("are");
+        someList.addLast("watching");
+        System.out.println(longest(someList));
     }
 }
