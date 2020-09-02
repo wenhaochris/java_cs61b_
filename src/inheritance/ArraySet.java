@@ -73,14 +73,38 @@ public class ArraySet<T> implements Iterable<T> {
 
     @Override
     public String toString(){
-        String returnString = "{";
+       StringBuilder returnSb = new StringBuilder("{");
         for(int i = 0; i < size - 1; i++){
-            returnString += items[i];
-            returnString += ",";
+            returnSb.append(items[i]);
+            returnSb.append(",");
         }
-        returnString += items[size-1];
-        returnString += "}";
-        return returnString;
+        returnSb.append(items[size-1]);
+        returnSb.append( "}" );
+        return returnSb.toString();
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if(this == other){
+            return true;
+        }
+        if(other == null){
+            return false;
+        }
+        if(other.getClass() != this.getClass()){
+            return false;
+        }
+
+        ArraySet<T> o = (ArraySet<T>) other;
+        if(this.size() != o.size()){
+            return false;
+        }
+        for(T item : this){
+            if(!o.contains(item)){
+                return false;
+            }
+        }
+        return true;
     }
 
 
